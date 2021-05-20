@@ -7,3 +7,4 @@ React + TypeScript プロジェクトで、Redux を使用したサンプルで�
 * [redux-persist](https://github.com/rt2zz/redux-persist) を用いたデータの永続化<br>
 ※ 参考：[Storeの永続化にredux-persistを使う](https://qiita.com/yasuhiro-yamada/items/bd86d7c9f35ebb1c1e7c)
 * わかりやすいディレクトリの構成
+* [MATERIAL-UI](https://material-ui.com/)を使ったダークモード
