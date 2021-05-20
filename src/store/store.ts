@@ -1,19 +1,19 @@
 import { combineReducers, createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { reducer as counterReducer } from './counter/reducer';
+import { reducer as screenReducer } from './screen/reducer';
 import { reducer as userReducer } from './user/reducer';
 
 const rootReducer = combineReducers({
 	user: userReducer,
-	counter: counterReducer
+	dark: screenReducer
 });
 
 // store 永続化の設定
 const persistConfig = {
 	key: 'root', // Storageに保存されるキー名
 	storage, // 保存先としてlocalStorageがここで設定される
-	whitelist: ['user'] // 保存するstate
+	whitelist: ['user', 'dark'] // 保存するstate
 };
 const persistedReducer = persistReducer<any, any>(persistConfig, rootReducer);
 

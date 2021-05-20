@@ -7,7 +7,7 @@ export const useUserSelector = () => {
 	return users.filter(user => user.id && user.username && user.password);
 };
 
-export const useCounterSelector = () => {
-	const counter = useSelector<StateType, number>(state => state.counter);
-	return counter;
+export const useDarkModeSelector = () => {
+	const dark = useSelector<StateType, boolean>(state => state.dark);
+	return dark;
 };

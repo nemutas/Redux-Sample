@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { css } from '@emotion/css';
 import { Button } from '@material-ui/core';
-import { decrementCount } from '../store/counter/action';
 import { deleteUser } from '../store/user/action';
 import { UserInfoType } from '../store/user/type';
 
@@ -15,7 +14,6 @@ export const UserCardCommand: React.FC<PropsType> = props => {
 
 	const onClickDeleteUser = () => {
 		dispatch(deleteUser(props.user));
-		dispatch(decrementCount());
 	};
 
 	return (

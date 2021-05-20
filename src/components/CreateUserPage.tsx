@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { css } from '@emotion/css';
-import { Button, TextField } from '@material-ui/core';
-import { incrementCount } from '../store/counter/action';
+import { Button, IconButton, TextField } from '@material-ui/core';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import { useDarkModeSelector } from '../store/hooks';
+import { screenMode } from '../store/screen/action';
 import { addUser } from '../store/user/action';
 import { halfwidthAlphanumeric } from '../utils/random';
 
@@ -13,15 +15,19 @@ export const CreateUserPage: React.FC = () => {
 	const [enableRegister, setEnableRegister] = useState(false);
 
 	const dispatch = useDispatch();
+	const dark = useDarkModeSelector();
 
 	const registerUser = () => {
 		dispatch(addUser({ id, username, password }));
-		dispatch(incrementCount());
 	};
 
 	useEffect(() => {
 		setEnableRegister(!!id && !!username && !!password);
 	}, [id, password, username]);
+
+	const onClickLightDark = () => {
+		dispatch(screenMode(!dark));
+	};
 
 	return (
 		<div className={s_wrapper}>
@@ -59,6 +65,11 @@ export const CreateUserPage: React.FC = () => {
 					Register
 				</Button>
 			</div>
+			<div className={s_screenmode}>
+				<IconButton aria-label="light-dark" onClick={() => onClickLightDark()}>
+					<Brightness4Icon />
+				</IconButton>
+			</div>
 		</div>
 	);
 };
@@ -81,4 +92,9 @@ const s_register_wrapper = css`
 	flex-direction: row;
 	justify-content: flex-end;
 	margin-top: 10px;
+`;
+
+const s_screenmode = css`
+	display: flex;
+	margin-top: auto;
 `;
